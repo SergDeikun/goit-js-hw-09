@@ -4,6 +4,7 @@ const refs = {
 };
 
 let intervalId = null;
+let isActive = true;
 
 refs.startBtn.addEventListener('click', handleStartClick);
 refs.stopBtn.addEventListener('click', handleStopClick);
@@ -13,15 +14,15 @@ function handleStartClick() {
     document.body.style.backgroundColor = getRandomHexColor();
   }, 1000);
 
-  refs.startBtn.setAttribute('disabled', 'disabled');
-  refs.stopBtn.removeAttribute('disabled');
+  refs.startBtn.disabled = true;
+  refs.stopBtn.disabled = false;
 }
 
 function handleStopClick() {
   clearInterval(intervalId);
 
-  refs.startBtn.removeAttribute('disabled');
-  refs.stopBtn.setAttribute('disabled', 'disabled');
+  refs.stopBtn.disabled = true;
+  refs.startBtn.disabled = false;
 }
 
 function getRandomHexColor() {
